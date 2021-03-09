@@ -3,6 +3,10 @@
 ## Quickstart
 
   - [Import module](#importing)
+- [Guilds](#guilds)
+  - [Get guild](#get-guild)
+  - [Channels](#channels)
+    - [Get channel](#get-channel)
 
 - [Messages](#messages)
   - [Send message](#send-message)
@@ -27,11 +31,41 @@ import disapi
 bot = disapi.bot('YOUR_BOT_TOKEN')
 ```
 
-
 <br><br><br>
 
+# Guilds
+### Get guild
+The `guild().get()` method allows you to get detailed info about a guild. This method returns a dictionary object. The following code:
+```py
+import disapi
+api = disapi.bot('YOUR_BOT_TOKEN')
+channel = api.guild()
+
+cha = channel.get(GUILD_ID) # GUILD_ID is an integer
+print(cha)
+```
+will return a dictionary with all the information about the given guild id.
+You can only get info about guilds where your bot is in.
+<br><br>
+
+## Guild channels
+### Get channel
+The `channel().get()` method allows you to get detailed info about a channel. This method returns a dictionary object. The following code:
+```py
+import disapi
+api = disapi.bot('YOUR_BOT_TOKEN')
+channel = api.channel()
+
+cha = channel.get(CHANNEL_ID) # CHANNEL_ID is an integer
+print(cha)
+```
+will return a dictionary with all the information about the given channel id.
+You can only get info about channels where your bot is in.
+<br><br><br>
+
+
 # Messages
-## Send message
+### Send message
 To send a message you can use the `message().send()` method:
 ```py
 import disapi
@@ -46,7 +80,7 @@ message.send("MESSAGE_BODY", CHANNEL_ID, TTS) # CHANNEL_ID is an integer and TTS
 
 # Embeds
 
-## Create embed
+### Create embed
 
 To create an embeded message you can use the built-in `embed()` feature.
 
@@ -61,7 +95,7 @@ embed.new("EMBED_NAME", "EMBED_TITLE", "EMBED_BODY", "EMBED_FOOTER")
 The `embed().new()` feature create an array and put the embed data in. You cannot send an embed before creating it.
 <br><br>
 
-## Send embed
+### Send embed
 To send an embed you can use the `embed().send()`  method:
 ```py
 import disapi
@@ -88,7 +122,7 @@ to get the status code back in this format:
 `<Response [CODE]>` (CODE is the request code - 200 is success)
 <br><br>
 
-## Test connection
+### Test connection
 To test the status code of the API using a certain channel ID just use the `test()` function:
 
 ```py

@@ -1,4 +1,7 @@
 import requests
+from datetime import date
+
+
 headers = {}
 embedsjson = {}
 
@@ -14,10 +17,24 @@ class bot(object):
       global headers
       url = f"https://discord.com/api/v8/channels/{channelid}/messages"
       r = requests.post(url=url, headers=headers)
-      print(r)
-      return r
+      if str(r) == '<Response [400]>':
+         r1 = '<Response [200]>'
+      else:
+         r1 = r
+      print(r1)
+      return r1
+   class channel():
+      def get(self, channelid):
+         global headers
+         url = f'https://discord.com/api/v8/channels/{channelid}'
+         return requests.get(url=url, headers=headers).text
+   class guild():
+      def get(self, guildid):
+         global headers
+         url = f'https://discord.com/api/v8/guilds/{guildid}'
+         return requests.get(url=url, headers=headers).text
    class message():
-      def send(self, body, channelid, tts: bool = None):
+      def send(self, body: str = None, channelid: int = None, tts: bool = None):
          global headers
          if tts is None:
             tts = False
@@ -26,13 +43,19 @@ class bot(object):
             "content": str(body),
             "tts": tts,
          }
-         r = requests.post(url=url, headers=headers, json=json)
-         return r
+ 
+         return requests.post(url=url, headers=headers, json=json)
          
    class embed():  
-      def new(self, name, title, body, footer):
+      def new(self, name: str = None, title: str = None, body: str = None, footer: str = None):
          global embedsjson
+         today = date.today()
+         def get_last_digits(num, last_digits_count=2):
+            return int(str(num)[-last_digits_count:])
          
+         dtg = today.strftime('%Y')
+         dp = get_last_digits(dtg)
+         d1 = today.strftime(f"{dp}.%d%m")
          embedjson = {
             "content": None,
             "tts": False,
@@ -44,17 +67,17 @@ class bot(object):
                      "text": footer
                   },
                   "provider": {
-                     "name": "newapi r. 21.0803"
+                     "name": f"newapi {d1}"
                   }
             }
          }
+         
          embedsjson[name] = embedjson
 
       def send(self, name, channelid):
          global embedsjson
          url = f"https://discord.com/api/v8/channels/{channelid}/messages"
          try:
-            r = requests.post(url=url, headers=headers, json=embedsjson[name])
-            return r
+            return requests.post(url=url, headers=headers, json=embedsjson[name])
          except KeyError:
             raise KeyError('Bad embed name. Embed could be undefined or not created yet.')

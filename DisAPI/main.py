@@ -1,8 +1,10 @@
-import disapi
-
-api = disapi.bot('NzgyOTQ4MTU2ODIzOTYxNjEw.X8TnSw.AJ1zBaF_tckJDfiRqSo8RL9rolQ')
+import disapi, os, time
+from dotenv import load_dotenv
+load_dotenv()
+api = disapi.bot(os.environ.get('TOKEN'))
 embed = api.embed()
 message = api.message()
+channel = api.guild()
 
 
 
@@ -10,7 +12,4 @@ message = api.message()
 
 
 # print(embed.send("newembed", 802141032992604190))
-
-# print(message.send("Hello, testing DisAPI 21.0309", 802141032992604190))
-
-api.test(802141032992604190)
+print(channel.get(776086052284268556))
