@@ -1,4 +1,4 @@
-# DisAPI - Python-Based Discord API module
+# disapi - Python-Based Discord API module
 
 ## Quickstart
 
