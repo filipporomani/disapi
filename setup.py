@@ -1,16 +1,15 @@
 from distutils.core import setup
-long_description = open('README.rst').read()
+import setuptools
 setup(
   name = 'disapi',        
   packages = ['disapi'],   
-  version = '21.0309B',    
+  version = '0.0.1',    
   license='MIT',   
-  long_description=long_description,
-  description = 'Basic Discord API module, built with Python.',  
+  description = 'Basic Discord API module, built with Python. For docs see github (https://github.com/filipporomani/disapi).',  
   author = 'Filippo Romani', 
   author_email = 'filipporomanionline@gmail.com',     
   url = 'https://github.com/filipporomani/DisAPI',   
-  download_url = 'https://github.com/filipporomani/DisAPI/archive/21.0309B.tar.gz', 
+  download_url = 'https://github.com/filipporomani/DisAPI/archive/0.0.1.tar.gz', 
   keywords = ['DISCORD', 'API', 'DISCORD API', 'PYTHON', 'DISCORD MODULE', 'BOT'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'requests'
@@ -29,4 +28,4 @@ setup(
     'Programming Language :: Python :: 3.9',
   ],
 )
-
+setuptools.setup()
