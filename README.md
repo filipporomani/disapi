@@ -39,10 +39,10 @@ The `guild().get()` method allows you to get detailed info about a guild. This m
 ```py
 import disapi
 api = disapi.bot('YOUR_BOT_TOKEN')
-channel = api.guild()
+guild = api.guild()
 
-cha = channel.get(GUILD_ID) # GUILD_ID is an integer
-print(cha)
+gui = guild.get(GUILD_ID) # GUILD_ID is an integer
+print(gui)
 ```
 will return a dictionary with all the information about the given guild id.
 You can only get info about guilds where your bot is in.
