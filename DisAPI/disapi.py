@@ -13,6 +13,12 @@ class bot(object):
             "Authorization": f"Bot {token}"
 
       }
+   def regionids(self):
+      global headers
+      url = f"https://discord.com/api/v8/voice/regions"
+      ids = requests.get(url=url, headers=headers).text
+      return ids
+      
    def test(self, channelid):
       global headers
       url = f"https://discord.com/api/v8/channels/{channelid}/messages"
@@ -29,6 +35,17 @@ class bot(object):
          url = f'https://discord.com/api/v8/channels/{channelid}'
          return requests.get(url=url, headers=headers).text
    class guild():
+      def set(self, guildid, dictionary):
+         global headers
+         url = f'https://discord.com/api/v8/guilds/{guildid}'
+         json = dictionary
+         return requests.patch(url=url, headers=headers, json=json).text
+      class member():
+         def set(self, guildid, memberid, dictionary):
+            global headers
+            url = f'https://discord.com/api/v8/guilds/{guildid}/members/{memberid}'
+            json = dictionary
+            return requests.patch(url=url, headers=headers, json=json).text
       def get(self, guildid):
          global headers
          url = f'https://discord.com/api/v8/guilds/{guildid}'

@@ -11,8 +11,9 @@ setup(
   url = 'https://github.com/filipporomani/DisAPI',   
   download_url = 'https://github.com/filipporomani/DisAPI/archive/0.0.1.tar.gz', 
   keywords = ['DISCORD', 'API', 'DISCORD API', 'PYTHON', 'DISCORD MODULE', 'BOT'],   # Keywords that define your package best
-  install_requires=[            # I get to this in a second
-          'requests'
+  install_requires=[
+          'requests',
+          'datetime'
       ],
   classifiers=[
     'Development Status :: 4 - Beta',     

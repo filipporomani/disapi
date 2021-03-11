@@ -5,6 +5,9 @@
   - [Import module](#importing)
 - [Guilds](#guilds)
   - [Get guild](#get-guild)
+  - [Edit Guild](#edit-guild)
+  - [Members](#guild-members)
+    - [Edit members](#edit-members)
   - [Channels](#channels)
     - [Get channel](#get-channel)
 
@@ -47,6 +50,52 @@ print(gui)
 will return a dictionary with all the information about the given guild id.
 You can only get info about guilds where your bot is in.
 <br><br>
+
+### Edit guild
+The `guild().edit()` function allows you to edit basic guild settings. Use:
+```py
+import disapi
+api = disapi.bot('YOUR_BOT_TOKEN')
+guild = api.guild()
+
+guild.set(GUILD_ID, DICT) # GUILD_ID is an integer and DICT is a dictionary
+```
+DICT should contain at least one of the following parameters:
+`{"name": string}` 
+`{"region" : region id}`
+`{"verification_level": integer (1-4)}`
+`{"default_message_notifications": integer (0-1)}`
+`{"explicit_content_filter": integer (0-2)}`
+`{"afk_channel_id": integer}`
+`{"afk_timeout": integer}`
+`{"system_channel_id": integer}`
+`{"rules_channel_id": integer}`
+`{"public_updates_channel_id": integer}`
+To see a list of all available region IDs just use the built-in `regionids()` feature.:
+```py
+import disapi, os, time, requests
+from dotenv import load_dotenv
+load_dotenv()
+api = disapi.bot('YOUR_BOT_TOKEN')
+
+print(api.regionids())
+```
+For more info about DICT values see the [Discord Dev Portal Docs](https://discord.com/developers/docs/resources/guild#modify-guild)
+
+## Guild members
+### Edit members
+The `guild().member().set()` function let you edit 2 user parameters: nickname (string) and roles (array).
+```py
+api = disapi.bot('YOUR_BOT_TOKEN')
+guild = api.guild()
+member = guild.member()
+
+member.set(GUILD_ID, MEMBER_ID, DICT)
+```
+Where DICT must contain at least one of the following parameters:
+
+`"nick": "NICKNAME"`
+`"roles": [ROLE_ID_1, ROLE_ID_2, ROLE_ID_3 etc.]`
 
 ## Guild channels
 ### Get channel
