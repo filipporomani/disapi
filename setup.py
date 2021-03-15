@@ -3,13 +3,13 @@ import setuptools
 setup(
   name = 'disapi',        
   packages = ['disapi'],   
-  version = '0.0.1',    
+  version = '0.0.2',    
   license='MIT',   
   description = 'Basic Discord API module, built with Python. For docs see github (https://github.com/filipporomani/disapi).',  
   author = 'Filippo Romani', 
   author_email = 'filipporomanionline@gmail.com',     
   url = 'https://github.com/filipporomani/DisAPI',   
-  download_url = 'https://github.com/filipporomani/DisAPI/archive/0.0.1.tar.gz', 
+  download_url = 'https://github.com/filipporomani/disapi/archive/0.0.2.tar.gz', 
   keywords = ['DISCORD', 'API', 'DISCORD API', 'PYTHON', 'DISCORD MODULE', 'BOT'],   # Keywords that define your package best
   install_requires=[
           'requests',
